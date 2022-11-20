@@ -29,6 +29,8 @@ io.on('connection', (socket) => {
 // static middleware
 app.use('/dist', express.static(path.join(__dirname, '../dist')))
 
+app.use('/public', express.static('public'));
+
 app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public/index.html'))
 }); 
