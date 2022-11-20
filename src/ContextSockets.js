@@ -18,7 +18,7 @@ const ContextProvider = ({ children }) => {
     const userVideo = useRef();
     const connectionRef = useRef();
 
-
+    console.log(userVideo, "USER video")
 
     useEffect(()=>{
         navigator.mediaDevices.getUserMedia({video: true, audio: true })
@@ -35,41 +35,41 @@ const ContextProvider = ({ children }) => {
     }, []);
 
     const answerCall = () => {
-        setCallAccepted(true);
-
-        const peer = new Peer({ initiator: false, trickle: false, stream});
-
-        peer.on('signal', (data)=> {
-            socket.emit('answercall',  { signal: data, to: call.from })
-        });
-
-        peer.on('stream', (currentStream) => {
-            userVideo.current.srcObject = currentStream;
-        });
-
-        peer.signal(call.signal);
-
-        connectionRef.current = peer;
+      setCallAccepted(true);
+  
+      const peer = new Peer({ initiator: false, trickle: false, stream });
+  
+      peer.on('signal', (data) => {
+        socket.emit('answercall', { signal: data, to: call.from });
+      });
+  
+      peer.on('stream', (currentStream) => {
+        userVideo.current.srcObject = currentStream;
+      });
+  
+      peer.signal(call.signal);
+  
+      connectionRef.current = peer;
     };
 
     const callUser = (id) => {
-        const peer = new Peer({ initiator: true, trickle: false, stream});
-        
-        peer.on('signal', (data)=> {
-            socket.emit('calluser',  { userToCall: id, signal: data, from: me, name })
-        });
-
-        peer.on('stream', (currentStream) => {
-            userVideo.current.srcObject = currentStream;
-        });
-
-        socket.on('accepted', (signal) => {
-            setCallAccepted(true);
-
-            peer.signal(signal);
-        });
-
-        connectionRef.current = peer;
+      const peer = new Peer({ initiator: true, trickle: false, stream });
+  
+      peer.on('signal', (data) => {
+        socket.emit('calluser', { userToCall: id, signalData: data, from: me, name });
+      });
+  
+      peer.on('stream', (currentStream) => {
+        userVideo.current.srcObject = currentStream;
+      });
+  
+      socket.on('callaccepted', (signal) => {
+        setCallAccepted(true);
+  
+        peer.signal(signal);
+      });
+  
+      connectionRef.current = peer;
     };
 
     const leaveCall = () => {
