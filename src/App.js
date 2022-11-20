@@ -16,7 +16,9 @@ const useStyles = {
         justifyContent: 'center',
         alignItems: 'center',
         width: '600px',
-        border: '2px solid black'
+        border: '2px solid black',
+        backgroundColor: '#1565c0',
+        color: 'white'
     },
 }
 
@@ -24,7 +26,7 @@ const App = () => {
     return ( 
         <div className='wrapper'>
             <AppBar sx={useStyles.appBar} position="static" color="inherit">
-                <Typography variant="h2" align="center">Video Chat by Ramir S.</Typography>
+                <Typography variant="h2" align="center">Dimelo</Typography>
             </AppBar>
             <VideoPlayer />
             <Options>

@@ -18,8 +18,6 @@ const ContextProvider = ({ children }) => {
     const userVideo = useRef();
     const connectionRef = useRef();
 
-    console.log(userVideo, "USER video")
-
     useEffect(()=>{
         navigator.mediaDevices.getUserMedia({video: true, audio: true })
             .then((currentStream) => {

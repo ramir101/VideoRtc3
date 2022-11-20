@@ -9,3 +9,18 @@
     align-items: center;
     width: 100%;
 }
+.video {
+    width: 550px;
+
+}
+body {
+    background:
+    linear-gradient(
+      rgba(0, 0, 0, 0.3), 
+      rgba(0, 0, 0, 0.3)
+    ),
+    url(https://images.unsplash.com/photo-1498036882173-b41c28a8ba34?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MTB8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=800&q=60);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
