@@ -4,7 +4,7 @@ import Peer from 'simple-peer';
 
 const SocketContext = createContext();
 
-const socket = io('http://localhost:3000');
+const socket = io('https://video-rtc-dimelo.herokuapp.com/');
 
 const ContextProvider = ({ children }) => {
     const [stream, setStream] = useState(null);
