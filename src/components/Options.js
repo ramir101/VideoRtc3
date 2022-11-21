@@ -17,7 +17,7 @@ const Options = ( { children }) => {
                           <TextField label='Name' value={name} onChange={(ev) => {setName(ev.target.value)}} fullWidth/>
                           <CopyToClipboard text={me}>
                             <Button variant='contained' fullWidth startIcon={<Assignment fontSize='large'/>}>
-                                Copy your ID
+                                Copy your ID - send to friend
                             </Button>   
                           </CopyToClipboard>
                         </Grid>
